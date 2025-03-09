@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import axios from 'axios';
-import { Login } from '../../models/login';
+import { Login } from '../../models/login.model';
 import { AuthService } from '../../services/auth.service';
 import { log } from 'console';
 @Component({
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(9),
+        Validators.minLength(3),
       ]),
     });
   }

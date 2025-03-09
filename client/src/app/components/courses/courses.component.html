@@ -1,4 +1,8 @@
-<p>courses works!</p>
-@for (item of this.list; track $index) {
-    <div>{{item.description}} -{{item.teacherId}}- {{item.title}}</div>
+@for (item of this.fullCourses; track $index) {
+    <div>{{item.description}} -{{item.teacherId}}- {{item.title}} 
+        @for (les of item.lessons; track $index) {
+            <div>{{les.content}} -{{les.title}}- {{les.courseId}} 
+            </div>
+        }
+    </div>
 }
