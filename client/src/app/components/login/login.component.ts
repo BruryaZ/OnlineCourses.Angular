@@ -9,10 +9,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import axios from 'axios';
 import { Login } from '../../models/login.model';
 import { AuthService } from '../../services/auth.service';
-import { log } from 'console';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   imports: [
@@ -27,16 +27,25 @@ import { log } from 'console';
 })
 export class LoginComponent implements OnInit {
   messege = '';
-  constructor(private AuthService: AuthService) {}
+  constructor(private AuthService: AuthService, private router: Router) { }
+
   async PostData() {
     try {
-      await this.AuthService.Login({
+      const res = await this.AuthService.Login({
         email: this.loginForm.get('email')?.value,
         password: this.loginForm.get('password')?.value,
       });
       console.log('success');
+
+      // שמירה של הטוקן וה-ID ב-localStorage
+      localStorage.setItem('token', res.token); // הנחה שיש לך טוקן בחזרה מהשרת
+      localStorage.setItem('userId', res.userId.toString()); // הנחה שיש לך ID בחזרה מהשרת
+      
     } catch (err: any) {
-      this.messege = 'no such user';
+      this.messege = 'You must register';
+
+      // ניווט להרשמה
+      this.router.navigate(['/register']);
     }
   }
 

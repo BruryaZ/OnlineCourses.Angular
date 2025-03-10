@@ -1,16 +1,16 @@
 <mat-card>
-    <mat-card-title>הוספת קורס חדש</mat-card-title>
+    <mat-card-title>Add a new course</mat-card-title>
     <mat-card-content>
         <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">
-                <mat-label>שם הקורס</mat-label>
-                <input matInput formControlName="title" placeholder="הכנס שם קורס">
+                <mat-label>course name</mat-label>
+                <input matInput formControlName="title" placeholder="Enter course name">
             </mat-form-field>
             <mat-form-field appearance="fill">
-                <mat-label>תיאור הקורס</mat-label>
-                <textarea matInput formControlName="description" placeholder="הכנס תיאור קורס"></textarea>
+                <mat-label>description course</mat-label>
+                <textarea matInput formControlName="description" placeholder="Enter description course"></textarea>
             </mat-form-field>
-            <button mat-raised-button color="primary" type="submit">הוסף קורס</button>
+            <button mat-raised-button color="primary" type="submit">add the course</button>
         </form>
     </mat-card-content>
 </mat-card>

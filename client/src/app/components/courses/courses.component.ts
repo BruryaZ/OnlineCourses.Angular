@@ -8,23 +8,24 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { RoundShadowDirective } from '../../directive/round-shadow.directive';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatListModule, RouterModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatListModule, RouterModule, MatButtonModule, RoundShadowDirective],
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-lesson: any;
+  lesson: any;
+  courses: Course[] = [];
+  fullCourses: FullCourse[] = [];
+
   constructor(
     private courseService: CoursesService,
     private lessonService: LessonsService
   ) {}
-  
-  courses: Course[] = [];
-  fullCourses: FullCourse[] = [];
 
   ngOnInit(): void {
     this.courseService.getCourses().subscribe((courses) => {
@@ -41,6 +42,19 @@ lesson: any;
           };
           this.fullCourses.push(fullCourse);
         });
+      });
+    });
+  }
+
+  deleteLesson(lessonId: number, courseId: number) {
+    this.lessonService.deleteLesson(courseId, lessonId).subscribe(() => {
+      this.fullCourses = this.fullCourses.map((fullCourse) => {
+        if (fullCourse.id === courseId) {
+          fullCourse.lessons = fullCourse.lessons.filter(
+            (lesson) => lesson.id !== lessonId
+          );
+        }
+        return fullCourse;
       });
     });
   }

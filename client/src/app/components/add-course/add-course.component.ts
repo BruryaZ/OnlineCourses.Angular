@@ -21,8 +21,8 @@ import { CoursesService } from '../../services/courses.service';
   styleUrls: ['./add-course.component.css']
 })
 export class AddCourseComponent {
-  user: any = null;
   courseForm: FormGroup;
+  userId :number = 0
 
   constructor(private fb: FormBuilder, private courseService: CoursesService) {
     this.courseForm = this.fb.group({
@@ -32,18 +32,16 @@ export class AddCourseComponent {
   }
 
   async onSubmit() {
-    if (localStorage.getItem('user') !== null) {
-      const userData = localStorage.getItem('user');
-      if (userData) {
-        this.user = JSON.parse(userData);
-      }
+    if (localStorage.getItem('userId') !== null) {
+      const userIdStr = localStorage.getItem('userId');
+      this.userId = userIdStr !== null ? parseInt(userIdStr, 10) : 0;
     }
     
     if (this.courseForm.valid) {
       const newCourse: Course = { 
         id: 0, 
         ...this.courseForm.value, 
-        teacherId: this.user != null ? this.user.id : 12 
+        teacherId: this.userId != null ? this.userId : 0 
       };
   
       // נניח ש-addCourse מחזיר Observable

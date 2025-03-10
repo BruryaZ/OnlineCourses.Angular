@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 import { MatCardModule } from '@angular/material/card';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,7 @@ export class RegisterComponent {
   message = '';
   registerForm: FormGroup;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.registerForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -49,6 +50,13 @@ export class RegisterComponent {
         next: (res) => {
           console.log('success!!', res);
           this.message = 'Registration successful!'; // הודעה למשתמש
+
+          // שמירה של הטוקן וה-ID ב-localStorage
+          localStorage.setItem('token', res.token); // הנחה שיש לך טוקן בחזרה מהשרת
+          localStorage.setItem('userId', res.userId.toString()); // הנחה שיש לך ID בחזרה מהשרת
+
+          // ניתוב לדף הבית
+          this.router.navigate(['/home']);
         },
         error: (error) => {
           console.log(error);
