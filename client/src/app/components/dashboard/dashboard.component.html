@@ -1,28 +1,19 @@
 <mat-toolbar color="primary">
-    <span>Dashboard Title</span>
-  </mat-toolbar>
-  
-  <mat-sidenav-container>
-    <mat-sidenav mode="side" opened>
-      <mat-nav-list>
-        <a mat-list-item href="#">Home</a>
-        <a mat-list-item href="#">Reports</a>
-        <a mat-list-item href="#">Settings</a>
-      </mat-nav-list>
-    </mat-sidenav>
-  
-    <mat-sidenav-content>
-      <div class="dashboard-content">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>Card Title</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>Content goes here...</p>
-          </mat-card-content>
-        </mat-card>
-        <!-- Add more cards or components as needed -->
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+  <span>Online Courses</span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item (click)="navigateToComponent('login')">Log In</a>
+      <a mat-list-item (click)="navigateToComponent('sign-up')">Sign Up</a>
+      <a mat-list-item (click)="navigateToComponent('home')">Home</a>
+      <a mat-list-item (click)="navigateToComponent('courses')">Courses</a>
+      <a mat-list-item (click)="navigateToComponent('add-course')">Add a Course</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet> <!-- כאן ייטען התוכן של הקומפוננטה שנבחרה -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

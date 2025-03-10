@@ -8,16 +8,15 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import { DeleteCourseComponent } from './components/delete-course/delete-course.component';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
-    { path: "", component: DashboardComponent },
+    { path: "", component: AppComponent },
     { path: "register", component: RegisterComponent },
     { path: "login", component: LoginComponent },
-    { path: "users", component: UsersComponent },
-    { path: "lessons", component: LessonsComponent },
     { path: "add-course", component: AddCourseComponent },
     { path: 'courses', component: CoursesComponent },
     { path: 'courses/edit/:id', component: EditCourseComponent },
     { path: 'courses/delete/:id', component:  DeleteCourseComponent},
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+    // { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];

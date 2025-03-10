@@ -1,3 +1,13 @@
 <!-- <app-dashboard/> -->
-<!-- <app-courses/> -->
-<router-outlet />
+<mat-toolbar color="primary">
+    <span>My Application</span>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/login" routerLinkActive="active">Log In</a>
+    <a mat-button routerLink="/register" routerLinkActive="active">Sign Up</a>
+    <a mat-button routerLink="/courses" routerLinkActive="active">Courses</a>
+    <a mat-button routerLink="/add-course" routerLinkActive="active">Add a Course</a>
+    <a mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a mat-button routerLink="/" routerLinkActive="active">Home</a>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
