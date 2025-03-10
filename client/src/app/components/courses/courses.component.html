@@ -1,8 +1,27 @@
-@for (item of this.fullCourses; track $index) {
-    <div>{{item.description}} -{{item.teacherId}}- {{item.title}} 
-        @for (les of item.lessons; track $index) {
-            <div>{{les.content}} -{{les.title}}- {{les.courseId}} 
-            </div>
-        }
-    </div>
-}
+<div class="container">
+  @for (course of this.fullCourses; track $index) {
+  <mat-card class="course-card">
+    <mat-card-header>
+      <mat-card-title>{{ course.title }}</mat-card-title>
+      <mat-card-subtitle>Teacher ID: {{ course.teacherId }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ course.description }}</p>
+      @for (lesson of course.lessons; track $index)
+      {
+      <mat-list>
+        <mat-list-item>
+          <h4 mat-line>{{ lesson.title }}</h4>
+          <p mat-line>{{ lesson.content }}</p>
+          <p mat-line>Course ID: {{ lesson.courseId }}</p>
+        </mat-list-item>
+      </mat-list>
+      }
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [routerLink]="['/courses/edit', course.id]">Edit</button>
+      <button mat-raised-button color="warn" [routerLink]="['/courses/delete', course.id]">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>
