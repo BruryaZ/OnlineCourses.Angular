@@ -1,17 +1,19 @@
 <mat-toolbar color="primary">
   <span>Online Courses</span>
-  <!-- <span class="spacer"></span> -->
-  <small>{{ currentDate | date:'fullDate' }}</small>
+  <span class="spacer"></span>
   <button mat-button (click)="navigateToComponent('login')">Log in</button>
   <button mat-button (click)="navigateToComponent('register')">Sign up</button>
   <button mat-button (click)="navigateToComponent('home')">Home</button>
   <button mat-button (click)="navigateToComponent('courses')">Courses</button>
   <button mat-button (click)="navigateToComponent('add-course')">Add a Course</button>
 </mat-toolbar>
+<mat-toolbar>
+  <span>{{ currentDate | date:'fullDate' }}</span>
+  <app-user-details [selectedComponent]="selectedComponent2"></app-user-details>
+</mat-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav-content>
-    <app-user-details [selectedComponent]="selectedComponent2"></app-user-details>
     <router-outlet></router-outlet> <!-- כאן ייטען התוכן של הקומפוננטה שנבחרה -->
   </mat-sidenav-content>
 </mat-sidenav-container>

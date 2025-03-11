@@ -1,46 +1,29 @@
-<!-- <p class="login-title">Login</p> -->
-<form [formGroup]="loginForm" class="login-form">
-  <div class="form-container">
-    <mat-form-field class="form-field">
-      <mat-label>Enter your email</mat-label>
-      <input
-        matInput
-        placeholder="pat@example.com"
-        type="text"
-        formControlName="email"
-        id="email"
-        required
-      /> 
-     
-      <mat-error  
-     >
-       {{this.loginForm.get('email')?.valid ==false? 'Please enter a valid email.':''}}
-      </mat-error>
-    </mat-form-field>
-    <br />
-    <mat-form-field class="form-field">
-      <mat-label>Enter your password</mat-label>
-      <input
-        matInput
-        [type]="hide ? 'password' : 'text'"
-        formControlName="password"
-        name="password"
-      />
-      <button
-        mat-icon-button
-        matSuffix
-        (click)="clickEvent($event)"
-        [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide"
-      >
-        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-      </button>
-      <mat-error  
-      >
-        {{this.loginForm.get('password')?.valid ==false? 'Please enter a valid password atLeast 9 digits.':''}}
-       </mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" class="submit-btn" type="submit" [disabled]="!loginForm.valid" (click)="PostData()">Login</button>
-    <p>{{messege}}</p>
-  </div>
-</form>
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="loginForm" class="login-form">
+      <div class="form-container">
+        <mat-form-field class="form-field">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" type="text" formControlName="email" id="email" required />
+          <mat-error>
+            {{ loginForm.get('email')?.invalid && loginForm.get('email')?.touched ? 'Please enter a valid email.' : '' }}
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="form-field">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" name="password" />
+          <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error>
+            {{ loginForm.get('password')?.invalid && loginForm.get('password')?.touched ? 'Please enter a valid password with at least 9 characters.' : '' }}
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="submit-btn" type="submit" (click)="PostData()">Login</button>
+        <p>{{ messege }}</p>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,59 +1,59 @@
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 mat-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--mdc-protected-button-label-text-color, var(--mat-sys-primary));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 mat-toolbar button {
-    margin-left: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 mat-sidenav-container {
-    height: 100vh;
+  height: 100vh;
 }
 
 mat-sidenav {
-    width: 250px;
+  width: 250px;
 }
 
 mat-nav-list a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 mat-nav-list a:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 mat-card {
-    margin: 16px;
+  margin: 16px;
 }
 
 mat-card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 mat-card-subtitle {
-    font-size: 1rem;
-    color: gray;
+  font-size: 1rem;
+  color: gray;
 }
 
 mat-card-content p {
-    font-size: 1rem;
-    line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 mat-card-actions {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 button {
-    margin-left: 8px;
+  margin-left: 8px;
 }

@@ -1,5 +1,16 @@
-<mat-card>
+<mat-card class="home-card">
     <mat-card-header>
+      <mat-card-title>Welcome to Online Courses</mat-card-title>
+      <mat-card-subtitle>Your gateway to knowledge</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="../assests/sky.jpg" alt="תיאור התמונה">
-</mat-card>
+    <img src="assests/images/sky.jpg" alt="Description of image">
+    <mat-card-content>
+      <p>
+        Explore a wide range of courses and enhance your skills with our online learning platform. Whether you're looking to learn a new language, improve your coding skills, or master a new hobby, we have something for everyone.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" routerLink="/courses">Browse Courses</button>
+      <button mat-raised-button color="accent" routerLink="/register">Sign Up</button>
+    </mat-card-actions>
+  </mat-card>
