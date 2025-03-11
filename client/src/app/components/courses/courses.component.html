@@ -38,6 +38,8 @@
         {
         <ng-container>
           <p>No lessons yet.</p>
+          <button appRoundShadow mat-button color="accent" [routerLink]="['/lessons',course.id,'add']">Add
+            Lesson</button>
         </ng-container>
         }
       </mat-card-content>
