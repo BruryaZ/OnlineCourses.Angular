@@ -34,7 +34,7 @@ export class AuthService {
     try {
       const res = await this.http.post<LoginRes>('http://localhost:3000/api/auth/register', user)
       if (res) {
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('userId', user.id.toString());
       }
       return res
     } catch (err: any) {
