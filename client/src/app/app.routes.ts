@@ -12,12 +12,11 @@ import { DeleteLessonComponent } from './components/delete-lesson/delete-lesson.
 import { AddLessonComponent } from './components/add-lesson/add-lesson.component';
 
 export const routes: Routes = [
-    { path: 'courses/edit/:id', component: EditCourseComponent, data: { prerender: true, getPrerenderParams: getPrerenderParams('courses/edit/:id') } },//
-    { path: 'lessons/:courseId/delete/:id', component: DeleteLessonComponent, data: { prerender: true, getPrerenderParams: getPrerenderParams('lessons/:courseId/delete/:id') } },
-    { path: 'lessons/:courseId/edit/:id', component: EditLessonComponent, data: { prerender: true, getPrerenderParams: getPrerenderParams('lessons/:courseId/edit/:id') } },
-    { path: 'courses/delete/:id', component: DeleteCourseComponent, data: { prerender: true, getPrerenderParams: getPrerenderParams('courses/delete/:id') } },//
-    { path: 'lessons/:courseId/add', component: AddLessonComponent, data: { prerender: true, getPrerenderParams: getPrerenderParams('lessons/:courseId/add') } },
-    { path: 'dashboard', component: DashboardComponent },
+    { path: 'courses/edit/:id', component: EditCourseComponent},//
+    { path: 'lessons/:courseId/delete/:id', component: DeleteLessonComponent },
+    { path: 'lessons/:courseId/edit/:id', component: EditLessonComponent },
+    { path: 'courses/delete/:id', component: DeleteCourseComponent},//
+    { path: 'lessons/:courseId/add', component: AddLessonComponent},
     { path: "register", component: RegisterComponent },
     { path: "home", component: HomeComponent },
     { path: "login", component: LoginComponent },
@@ -25,31 +24,3 @@ export const routes: Routes = [
     { path: 'courses', component: CoursesComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
-
-// קובץ server.js או קובץ ההגדרות של השרת שלך
-export function getPrerenderParams(route: string) {
-    switch (route) {
-        case 'courses/edit/:id':
-            return [
-                { id: '1' }, // לדוגמה, קורס עם ID 1
-                { id: '2' }, // קורס עם ID 2
-            ];
-        case 'lessons/:courseId/delete/:id':
-            return [
-                { courseId: '1', id: '1' }, // לדוגמה, שיעור בקורס עם ID 1
-                { courseId: '1', id: '2' }, // שיעור נוסף
-            ];
-        case 'lessons/:courseId/edit/:id':
-            return [
-                { courseId: '1', id: '1' }, // לדוגמה, שיעור בקורס עם ID 1
-                { courseId: '1', id: '2' }, // שיעור נוסף
-            ];
-        case 'courses/delete/:id':
-            return [
-                { id: '1' }, // קורס למחיקה
-                { id: '2' }, // קורס נוסף למחיקה
-            ];
-        default:
-            return [];
-    }
-}

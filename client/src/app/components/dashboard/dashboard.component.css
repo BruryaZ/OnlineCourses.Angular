@@ -1,41 +1,59 @@
-.dashboard-content {
-    padding: 20px;
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--mdc-protected-button-label-text-color, var(--mat-sys-primary));
 }
 
-.course-card {
-    width: calc(33% - 20px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+mat-toolbar button {
+    margin-left: 8px;
 }
 
-.course-card:hover {
-    transform: scale(1.05);
+mat-sidenav-container {
+    height: 100vh;
 }
 
 mat-sidenav {
-    background-color: #f4f4f4;
+    width: 250px;
 }
 
-mat-list-item {
-    font-size: 16px;
-    padding: 10px 20px;
-<<<<<<< HEAD
+mat-nav-list a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.spacer {
-    flex: 1 1 auto;
+mat-nav-list a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-.spacer {
-    flex: 1 1 auto;
+mat-card {
+    margin: 16px;
 }
 
-img {
-    height: 40px;
-    margin-left: 10px;
-=======
->>>>>>> 9132c2f470960da332748bc63574d09cafab1ed0
+mat-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+mat-card-subtitle {
+    font-size: 1rem;
+    color: gray;
+}
+
+mat-card-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    margin-left: 8px;
 }
