@@ -22,7 +22,7 @@ import { CoursesService } from '../../services/courses.service';
 })
 export class AddCourseComponent {
   courseForm: FormGroup;
-  userId :number = 0
+  userId: number = 0
 
   constructor(private fb: FormBuilder, private courseService: CoursesService) {
     this.courseForm = this.fb.group({
@@ -32,18 +32,20 @@ export class AddCourseComponent {
   }
 
   async onSubmit() {
-    if (localStorage.getItem('userId') !== null) {
-      const userIdStr = localStorage.getItem('userId');
-      this.userId = userIdStr !== null ? parseInt(userIdStr, 10) : 0;
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem('userId') !== null) {
+        const userIdStr = localStorage.getItem('userId');
+        this.userId = userIdStr !== null ? parseInt(userIdStr, 10) : 0;
+      }
     }
-    
+
     if (this.courseForm.valid) {
-      const newCourse: Course = { 
-        id: 0, 
-        ...this.courseForm.value, 
-        teacherId: this.userId != null ? this.userId : 0 
+      const newCourse: Course = {
+        id: 0,
+        ...this.courseForm.value,
+        teacherId: this.userId != null ? this.userId : 0
       };
-  
+
       // נניח ש-addCourse מחזיר Observable
       this.courseService.addCourse(newCourse).subscribe({
         next: (res) => {

@@ -7,85 +7,96 @@ import { User } from '../models/user.model';
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    const token = localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
 
-    if (!token) {
-      throw new Error("No token found");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      });
+
+      return this.http.get<User[]>('http://localhost:3000/api/users', { headers });
     }
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    return this.http.get<User[]>('http://localhost:3000/api/users', {
-      headers,
-    });
+    return new Observable<User[]>(); // Return an empty observable if window is undefined
   }
 
   getUserById(id: number): Observable<User> {
-    const token = localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
 
-    if (!token) {
-      throw new Error("No token found");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      });
+
+      return this.http.get<User>(`http://localhost:3000/api/users/${id}`, { headers, });
     }
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    return this.http.get<User>(`http://localhost:3000/api/users/${id}`, {
-      headers,
-    });
+    return new Observable<User>(); // Return an empty observable if window is undefined
   }
 
   addUser(user: User): Observable<any> {
-    const token = localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
 
-    if (!token) {
-      throw new Error("No token found");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      });
+
+      return this.http.post<User>(`http://localhost:3000/api/users`, user, {
+        headers,
+      });
     }
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    return this.http.post<User>(`http://localhost:3000/api/users`, user, {
-      headers,
-    });
+    return new Observable<User[]>(); // Return an empty observable if window is undefined
   }
 
   updateUser(id: number, user: User): Observable<any> {
-    const token = localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
 
-    if (!token) {
-      throw new Error("No token found");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      });
+
+      return this.http.put<User>(`http://localhost:3000/api/users/${id}`, user, {
+        headers,
+      });
     }
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    return this.http.put<User>(`http://localhost:3000/api/users/${id}`, user, {
-      headers,
-    });
+    return new Observable<User[]>(); // Return an empty observable if window is undefined
   }
 
   deleteUser(id: number): Observable<any> {
-    const token = localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
 
-    if (!token) {
-      throw new Error("No token found");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      });
+
+      return this.http.delete<User>(`http://localhost:3000/api/users/${id}`, {
+        headers,
+      });
     }
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    return this.http.delete<User>(`http://localhost:3000/api/users/${id}`, {
-      headers,
-    });
+    return new Observable<User[]>(); // Return an empty observable if window is undefined
   }
 }

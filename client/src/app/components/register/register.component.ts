@@ -51,10 +51,11 @@ export class RegisterComponent {
           console.log('success!!', res);
           this.message = 'Registration successful!'; // הודעה למשתמש
 
-          // שמירה של הטוקן וה-ID ב-localStorage
-          localStorage.setItem('token', res.token); // הנחה שיש לך טוקן בחזרה מהשרת
-          localStorage.setItem('userId', res.userId.toString()); // הנחה שיש לך ID בחזרה מהשרת
-
+          if (typeof window !== 'undefined') {
+            // שמירה של הטוקן וה-ID ב-localStorage
+            localStorage.setItem('token', res.token); // הנחה שיש לך טוקן בחזרה מהשרת
+            localStorage.setItem('userId', res.userId.toString()); // הנחה שיש לך ID בחזרה מהשרת
+          }
           // ניתוב לדף הבית
           this.router.navigate(['/home']);
         },

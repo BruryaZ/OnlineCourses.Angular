@@ -21,7 +21,9 @@ export class AuthService {
         })
       );
       if (res?.token) {
-        localStorage.setItem('token', res.token);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('token', res.token);
+        }
       }
       return res
     } catch (err: any) {
@@ -34,7 +36,9 @@ export class AuthService {
     try {
       const res = await this.http.post<LoginRes>('http://localhost:3000/api/auth/register', user)
       if (res) {
-        localStorage.setItem('userId', user.id.toString());
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('userId', user.id.toString());
+        }
       }
       return res
     } catch (err: any) {

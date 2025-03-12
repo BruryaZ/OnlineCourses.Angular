@@ -7,7 +7,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule, MatToolbarModule, DashboardComponent],
+  imports: [CommonModule, RouterOutlet, MatButtonModule, MatToolbarModule, DashboardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

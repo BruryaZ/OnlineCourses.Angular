@@ -10,7 +10,10 @@ export class CoursesService {
   constructor(private http: HttpClient) { }
 
   getCourses(): Observable<Course[]> {
-    const token = localStorage.getItem('token');
+    let token: string | null = null;
+    if (typeof window !== 'undefined') {
+      token = localStorage.getItem('token');
+    }
 
     if (token) {
       const headers = new HttpHeaders({
@@ -24,67 +27,82 @@ export class CoursesService {
   }
 
   getCourseById(id: number): Observable<Course> {
-    const token = localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
 
-    if (!token) {
-      throw new Error("No token found");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      });
+
+      return this.http.get<Course>(`http://localhost:3000/api/courses/${id}`, { headers });
     }
 
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    return this.http.get<Course>(`http://localhost:3000/api/courses/${id}`, { headers });
+    throw new Error("Window is undefined");
   }
 
   addCourse(course: Course): Observable<any> {
-    const token = localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
 
-    if (!token) {
-      throw new Error("No token found");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      });
+
+      return this.http.post<Course>(
+        `http://localhost:3000/api/courses`,
+        course, { headers }
+      );
     }
 
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    return this.http.post<Course>(
-      `http://localhost:3000/api/courses`,
-      course, { headers }
-    );
+    throw new Error("Window is undefined");
   }
 
   updateCourse(id: number, course: Course): Observable<any> {
-    const token = localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
 
-    if (!token) {
-      throw new Error("No token found");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      });
+
+      return this.http.put<Course>(
+        `http://localhost:3000/api/courses/${id}`,
+        course, { headers }
+      );
     }
 
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    return this.http.put<Course>(
-      `http://localhost:3000/api/courses/${id}`,
-      course, { headers }
-    );
+    throw new Error("Window is undefined");
   }
 
   deleteCourse(id: number): Observable<any> {
-    const token = localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
 
-    if (!token) {
-      throw new Error("No token found");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      });
+
+      return this.http.delete<Course>(
+        `http://localhost:3000/api/courses/${id}`, { headers }
+      );
     }
 
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    return this.http.delete<Course>(
-      `http://localhost:3000/api/courses/${id}`, { headers }
-    );
+    throw new Error("Window is undefined");
   }
 }
-
