@@ -23,7 +23,7 @@ export class CoursesService {
       return this.http.get<Course[]>('http://localhost:3000/api/courses', { headers });
     }
 
-    throw new Error("No token found");
+    return new Observable<any>(); // Return an empty observable if window is undefined
   }
 
   getCourseById(id: number): Observable<Course> {
@@ -41,7 +41,7 @@ export class CoursesService {
       return this.http.get<Course>(`http://localhost:3000/api/courses/${id}`, { headers });
     }
 
-    throw new Error("Window is undefined");
+    return new Observable<any>(); // Return an empty observable if window is undefined
   }
 
   addCourse(course: Course): Observable<any> {
@@ -62,7 +62,7 @@ export class CoursesService {
       );
     }
 
-    throw new Error("Window is undefined");
+    return new Observable<any>(); // Return an empty observable if window is undefined
   }
 
   updateCourse(id: number, course: Course): Observable<any> {
@@ -83,7 +83,7 @@ export class CoursesService {
       );
     }
 
-    throw new Error("Window is undefined");
+    return new Observable<any>(); // Return an empty observable if window is undefined
   }
 
   deleteCourse(id: number): Observable<any> {
@@ -103,6 +103,6 @@ export class CoursesService {
       );
     }
 
-    throw new Error("Window is undefined");
+    return new Observable<any>(); // Return an empty observable if window is undefined
   }
 }
