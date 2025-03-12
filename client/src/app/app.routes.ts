@@ -21,7 +21,7 @@ export const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "add-course", component: AddCourseComponent },
     { path: 'courses', component: CoursesComponent },
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    // { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '', component: HomeComponent },
 
 ];
