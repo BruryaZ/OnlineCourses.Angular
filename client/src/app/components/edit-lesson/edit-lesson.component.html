@@ -1,21 +1,16 @@
 <mat-card>
-    <mat-card-header>
-        <mat-card-title>Edit Lesson</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form (ngSubmit)="updateLesson()">
+  <mat-card-title>Edit Lesson</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="lessonForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="fill">
           <mat-label>Title</mat-label>
-          <input matInput type="text" [(ngModel)]="lesson.title" name="title" required placeholder="Enter lesson title">
+          <input matInput formControlName="title" placeholder="Enter course title">
         </mat-form-field>
-  
         <mat-form-field appearance="fill">
           <mat-label>Content</mat-label>
-          <textarea matInput [(ngModel)]="lesson.content" name="content" required placeholder="Enter lesson content"></textarea>
+          <textarea matInput formControlName="content" placeholder="Enter course description"></textarea>
         </mat-form-field>
-  
-        <button mat-raised-button color="primary" type="submit">Save Changes</button>
-      </form>
-    </mat-card-content>
-  </mat-card>
-  
+      <button mat-raised-button color="primary" type="submit">Save</button>
+    </form>
+  </mat-card-content>
+</mat-card>

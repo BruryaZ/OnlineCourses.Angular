@@ -1,30 +1,27 @@
 <mat-card>
-  <mat-card-title>Add a new lesson</mat-card-title>
+  <mat-card-title>Add a new Lesson</mat-card-title>
   <mat-card-content>
-    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="form-container">
-      <mat-form-field class="form-field" appearance="fill">
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
         <input matInput formControlName="title" placeholder="Enter lesson title" required />
-
         @if (courseForm.get('title')?.invalid && (courseForm.get('title')?.dirty || courseForm.get('title')?.touched)) {
         <mat-error>
           Please enter a valid title.
         </mat-error>
         }
       </mat-form-field>
-
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>Content</mat-label>
         <textarea matInput formControlName="content" placeholder="Enter lesson content" required></textarea>
-
-        @if (courseForm.get('content')?.invalid && (courseForm.get('content')?.dirty || courseForm.get('content')?.touched)) {
-        <mat-error >
+        @if (courseForm.get('content')?.invalid && (courseForm.get('content')?.dirty ||
+        courseForm.get('content')?.touched)) {
+        <mat-error>
           Please enter valid content.
         </mat-error>
         }
       </mat-form-field>
-
-      <button mat-raised-button color="primary" type="submit" [disabled]="!courseForm.valid">Add the Lesson</button>
+      <button mat-raised-button color="primary" type="submit">Add the Lesson</button>
     </form>
   </mat-card-content>
 </mat-card>

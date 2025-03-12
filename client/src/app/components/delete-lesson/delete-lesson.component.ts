@@ -5,11 +5,15 @@ import { LessonsService } from '../../services/lessons.service';
 import { Lesson } from '../../models/lesson.model';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-delete-lesson',
-  imports: [ CommonModule,
-    MatCardModule,],
+  imports: [ 
+    CommonModule,
+     MatCardModule,
+     MatButtonModule
+    ],
   templateUrl: './delete-lesson.component.html',
   styleUrl: './delete-lesson.component.css'
 })
