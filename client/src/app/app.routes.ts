@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CoursesComponent } from './components/courses/courses.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import { DeleteCourseComponent } from './components/delete-course/delete-course.component';
@@ -22,5 +21,7 @@ export const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "add-course", component: AddCourseComponent },
     { path: 'courses', component: CoursesComponent },
-    { path: '', redirectTo: '/home', pathMatch: 'full' }
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', component: HomeComponent },
+
 ];
